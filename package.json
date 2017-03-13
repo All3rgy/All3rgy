@@ -1,0 +1,19 @@
+{
+  "name": "all3rgy",
+  "version": "1.0.0",
+  "description": "Food information website for people with allergies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/All3rgy/All3rgy.git"
+  },
+  "author": "All3rgy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/All3rgy/All3rgy/issues"
+  },
+  "homepage": "https://github.com/All3rgy/All3rgy#readme"
+}
