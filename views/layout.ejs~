@@ -1,0 +1,13 @@
+<ul class="accounts">
+    <% for(var i=0; i<accounts.length; i++) {%>
+	<li class="account">
+	    <span><%= accounts[i].username %></span><br>
+	    <span><%= accounts[i].password %></span>
+	</li>
+    <% } %>
+</ul>
+
+18 Conditoons  -
+3 Audo Visualizations (control, spectrogram, and waveform)
+x 3 Sound Event Polyphony(1,2, 3-4)
+x 2 Conc. of sound event Polyphony ( Gini coefficient : [0,.5) , [0.5, 1] )
