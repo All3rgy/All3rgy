@@ -12,17 +12,32 @@ MongoClient.connect(mongodb_url, (err, database) => {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
+    console.log('On /');
+    return res.render('index');
+
 });
 
 //Search Handler
 router.post('/search', (req,res) => {
     console.log(req.body['search']);
-    res.redirect('/');
+    
+    var query = req.body['search'];
+    
+    var cursor = db.collection('order').find({name:query});
+
+    cursor.toArray(function(err, results) {
+	console.log(results);
+	// results = results[0]['name'];
+	return res.render('layout', {foods: results});
+	// res.send(results);
+	
+	// send HTML file populated with quotes here
+    });
+    
 });
 
 router.get('/order', function(req, res, next) {
-
+    
     var cursor = db.collection('order').find();
     
     db.collection('order').find().toArray(function(err, results) {
@@ -33,7 +48,7 @@ router.get('/order', function(req, res, next) {
 	
 	// send HTML file populated with quotes here
     });
-
+    
 });
 
 module.exports = router;

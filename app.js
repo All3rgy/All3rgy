@@ -18,7 +18,9 @@ var db;
 app.use(bodyParser.urlencoded({extended: true}));
 
 // view engine setup
-app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/'}));
+// app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'index', layoutsDir: __dirname + '/views/'}));
+app.engine('hbs', hbs({extname: 'hbs', layoutsDir: __dirname + '/views/'}));
+// app.engine('hbs', handlebars.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 // app.set('views', path.join(__dirname, 'views'));
