@@ -38,17 +38,17 @@ app.use('/', index);
 app.use('/users', users);
 
 //listening on server 3000
-MongoClient.connect(mongodb_url, (err, database) => {
-    if (err) return console.log(err);
-    db = database;
-    app.listen(3000, () => {
-	console.log('connected to db');
-    });
-});
-
-// app.listen(3000, function() {
-//     console.log('listening on 3000');
+// MongoClient.connect(mongodb_url, (err, database) => {
+//     if (err) return console.log(err);
+//     db = database;
+//     app.listen(3000, () => {
+// 	console.log('connected to db');
+//     });
 // });
+
+app.listen(3000, function() {
+    console.log('listening on 3000');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
