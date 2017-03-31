@@ -67,26 +67,42 @@ router.post('/search', (req,res) => {
     console.log(req.body);
 
     var namequery = req.body['search'];
-    var tagquery = req.body['allergies'];
-
-    if (tagquery != undefined && tagquery.length == 1){
-	tagquery = tagquery.split();
-    }
+    var allergyquery = req.body['allergies'];
+    var cursor;
+    var tagquery = [];
+    var clearq;
     
-    var cursor = db.collection('order').find({name:namequery, tags: {$in : tagquery }});
+    if (allergyquery != undefined && typeof allergyquery == "string"){
+	tagquery = allergyquery.split(); 
+    }
+    else if (allergyquery == undefined)
+    	cursor = db.collection('order').find({name:namequery});
+    else
+	cursor = db.collection('order').find({name:namequery, tags: {$in : tagquery }});
     
     cursor.toArray(function(err, results) {
 	console.log(results);
-
+	
 	finalquery = [];
 	
 	if (results != undefined){
 	    for (const r of results){
-		if (tagquery in r['tags']){
-		    finalquery.push(r);
+		clearq = true;
+		
+		for (const t of tagquery){
+		    console.log(t in tagquery);
+		    if (!(tagquery.indexOf(t) != -1)){
+			clearq = false;
+			break;
+		    }
 		}
+		
+		if (clearq)
+		    finalquery.push(r);
 	    }
 	}
+
+	console.log(finalquery);
 	// results = results[0]['name'];
 	return res.render('layout', {foods: finalquery});
 	// res.send(results);
