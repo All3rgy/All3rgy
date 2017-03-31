@@ -23,8 +23,6 @@ app.engine('hbs', hbs({extname: 'hbs', layoutsDir: __dirname + '/views/'}));
 // app.engine('hbs', handlebars.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -48,13 +46,14 @@ app.use('/users', users);
 
 app.listen(3000, function() {
     console.log('listening on 3000');
+    
 });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler

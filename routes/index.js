@@ -55,18 +55,40 @@ router.get('/', function(req, res, next) {
 
 });
 
+/*
+ [ { _id: 58c82300f36d287eb5cb54c4,
+ name: 'chicken rice',
+ tags: 'gluten-free, whatever',
+ rest_name: 'Babycupcakes' } ]
+ */
+
 //Search Handler
 router.post('/search', (req,res) => {
-    console.log(req.body['search']);
+    console.log(req.body);
+
+    var namequery = req.body['search'];
+    var tagquery = req.body['allergies'];
+
+    if (tagquery != undefined && tagquery.length == 1){
+	tagquery = tagquery.split();
+    }
     
-    var query = req.body['search'];
-    
-    var cursor = db.collection('order').find({name:query});
+    var cursor = db.collection('order').find({name:namequery, tags: {$in : tagquery }});
     
     cursor.toArray(function(err, results) {
 	console.log(results);
+
+	finalquery = [];
+	
+	if (results != undefined){
+	    for (const r of results){
+		if (tagquery in r['tags']){
+		    finalquery.push(r);
+		}
+	    }
+	}
 	// results = results[0]['name'];
-	return res.render('layout', {foods: results});
+	return res.render('layout', {foods: finalquery});
 	// res.send(results);
 	
 	// send HTML file populated with quotes here

@@ -1,142 +1,150 @@
 
 <!-- <body>
 
-    <form action="/search" method="POST">
-	<input type="text" name="search" placeholder="Search here"> <br>
-	<input type="checkbox" name="allergies" value="peanut">Peanut
-	<input type="checkbox" name="allergies" value="wheat">Wheat
-	<input type="checkbox" name="allergies" value="milk">Milk
-	<input type="checkbox" name="allergies" value="soy">Soy<br>
-	<input type="checkbox" name="allergies" value="tree nut">Tree Nut
-	<input type="checkbox" name="allergies" value="shellfish">Shell Fish
-	<!-- <input type="checkbox" name="allergies" value="all">
-	     <input type="checkbox" name="allergies" value="Peanut">Peanut<br>
-	     <input type="checkbox" name="allergies" value="Peanut">Peanut<br> -->
-	<!-- <input type="submit" name="submit" value="Search">
-    </form>
+     <form action="/search" method="POST">
+     <input type="text" name="search" placeholder="Search here"> <br>
+     <input type="checkbox" name="allergies" value="peanut">Peanut
+     <input type="checkbox" name="allergies" value="wheat">Wheat
+     <input type="checkbox" name="allergies" value="milk">Milk
+     <input type="checkbox" name="allergies" value="soy">Soy<br>
+     <input type="checkbox" name="allergies" value="tree nut">Tree Nut
+     <input type="checkbox" name="allergies" value="shellfish">Shell Fish
+     <!-- <input type="checkbox" name="allergies" value="all">
+     <input type="checkbox" name="allergies" value="Peanut">Peanut<br>
+     <input type="checkbox" name="allergies" value="Peanut">Peanut<br> -->
+<!-- <input type="submit" name="submit" value="Search">
+     </form>
 
-</body> --> -->
+     </body> --> -->
 
 
 <!DOCTYPE html>
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="pizza, delivery food, fast food, sushi, take away, chinese, italian food">
-    <meta name="description" content="">
-    <meta name="author" content="Ansonika">
-    <title>All3rgy - Personalized Dining</title>
+    <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="pizza, delivery food, fast food, sushi, take away, chinese, italian food">
+	<meta name="description" content="">
+	<meta name="author" content="Ansonika">
+	<title>All3rgy - Personalized Dining</title>
 
-    <!-- Favicons-->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+	<!-- Favicons-->
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
 
-    <!-- GOOGLE WEB FONT -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,300,300italic" rel="stylesheet" type="text/css">
+	<!-- GOOGLE WEB FONT -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,300,300italic" rel="stylesheet" type="text/css">
 
-    <!-- BASE CSS -->
-    <link href="css/base.css" rel="stylesheet">
+	<!-- BASE CSS -->
+	<link href="css/base.css" rel="stylesheet">
 
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
+	<!--[if lt IE 9]>
+	    <script src="js/html5shiv.min.js"></script>
+	    <script src="js/respond.min.js"></script>
+	<![endif]-->
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-<!--[if lte IE 8]>
-    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
-<![endif]-->
+	<!--[if lte IE 8]>
+	    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
+	<![endif]-->
 
 	<div id="preloader">
-        <div class="sk-spinner sk-spinner-wave" id="status">
-            <div class="sk-rect1"></div>
-            <div class="sk-rect2"></div>
-            <div class="sk-rect3"></div>
-            <div class="sk-rect4"></div>
-            <div class="sk-rect5"></div>
-        </div>
-    </div><!-- End Preload -->
-
-    <!-- Header ================================================== -->
-    <header>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col--md-4 col-sm-4 col-xs-4">
-                <a href="index_video.html" id="logo">
-                <img src="img/logo.png" width="190" height="60" alt="" data-retina="false" class="hidden-xs">
-                <img src="img/logo_mobile.png" width="59" height="23" alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm">
-                </a>
+            <div class="sk-spinner sk-spinner-wave" id="status">
+		<div class="sk-rect1"></div>
+		<div class="sk-rect2"></div>
+		<div class="sk-rect3"></div>
+		<div class="sk-rect4"></div>
+		<div class="sk-rect5"></div>
             </div>
-            <nav class="col--md-8 col-sm-8 col-xs-8">
-            <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
-            <div class="main-menu">
-                <div id="header_menu">
-                    <img src="img/logo.png" width="190" height="23" alt="" data-retina="false">
-                </div>
-                <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
-                 <ul>
-                    <li class="submenu">
-                    <a href="javascript:void(0);" class="">Home</a>
+	</div><!-- End Preload -->
 
-                    </li>
+	<!-- Header ================================================== -->
+	<header>
+	    <div class="container-fluid">
+		<div class="row">
+		    <div class="col--md-4 col-sm-4 col-xs-4">
+			<a href="index_video.html" id="logo">
+			    <img src="img/logo.png" width="190" height="60" alt="" data-retina="false" class="hidden-xs">
+			    <img src="img/logo_mobile.png" width="59" height="23" alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm">
+			</a>
+		    </div>
+		    <nav class="col--md-8 col-sm-8 col-xs-8">
+			<a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
+			<div class="main-menu">
+			    <div id="header_menu">
+				<img src="img/logo.png" width="190" height="23" alt="" data-retina="false">
+			    </div>
+			    <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
+			    <ul>
+				<li class="submenu">
+				    <a href="javascript:void(0);" class="">Home</a>
 
-                    <li><a href="#0" data-toggle="modal" data-target="#register">Register</a></li>
+				</li>
 
-                    <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
+				<li><a href="#0" data-toggle="modal" data-target="#register">Register</a></li>
+
+				<li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
 
 
-                </ul>
-            </div><!-- End main-menu -->
-            </nav>
-        </div><!-- End row -->
-    </div><!-- End container -->
-    </header>
-    <!-- End Header =============================================== -->
+			    </ul>
+			</div><!-- End main-menu -->
+		    </nav>
+		</div><!-- End row -->
+	    </div><!-- End container -->
+	</header>
+	<!-- End Header =============================================== -->
 
-    <!-- SubHeader =============================================== -->
-    <section class="parallax-window" id="home" data-parallax="scroll" data-image-src="img/sub_header_home.jpg" data-natural-width="1400" data-natural-height="550">
-    <div id="subheader">
-        <div id="sub_content">
-            <h1>Personalized Dining</h1>
-            <p>
-                Order food online, or choose from our selection of curated recipes.
-            </p>
-            <form method="post" action="list_page.html">
-                <div id="custom-search-input">
-                    <div class="input-group ">
-                        <input type="text" class=" search-query" placeholder="Search Resturaunts or Recipes">
-                        <span class="input-group-btn">
-                        <input type="submit" class="btn_search" value="submit">
-                        </span>
-                    </div>
-                </div>
-            </form>
-
-            <div style="padding-top: 50px;">
-				<a href="list_page.html" class="button_intro">Resturaunts</a>
-				<a href="list_page.html" class="button_intro">Recipes</a>
+	<!-- SubHeader =============================================== -->
+	<section class="parallax-window" id="home" data-parallax="scroll" data-image-src="img/sub_header_home.jpg" data-natural-width="1400" data-natural-height="550">
+	    <div id="subheader">
+		<div id="sub_content">
+		    <h1>Personalized Dining</h1>
+		    <p>
+			Order food online, or choose from our selection of curated recipes.
+		    </p>
+		    <form method="post" action="search">
+			<div id="custom-search-input">
+			    <div class="input-group ">
+				<input type="text" class=" search-query" placeholder="Search Resturaunts or Recipes" name="search">
+				<input type="checkbox" name="allergies" value="peanut">Peanut
+				<input type="checkbox" name="allergies" value="gluten-free">Gluten-Free
+				<input type="checkbox" name="allergies" value="wheat">Wheat
+				<input type="checkbox" name="allergies" value="milk">Milk
+				<input type="checkbox" name="allergies" value="soy">Soy<br>
+				<input type="checkbox" name="allergies" value="tree nut">Tree Nut
+				<input type="checkbox" name="allergies" value="shellfish">Shell Fish
+				
+				<span class="input-group-btn">
+				    <input type="submit" class="btn_search" value="submit">
+				</span>
+			    </div>
 			</div>
+		    </form>
 
-        </div><!-- End sub_content -->
-    </div><!-- End subheader -->
-    <div id="count" class="hidden-xs">
-        <ul>
-            <li><span class="number">2650</span> Restaurants</li>
-            <li><span class="number">5350</span> People Served</li>
-            <li><span class="number">12350</span> Registered Users</li>
-        </ul>
-    </div>
-    </section><!-- End section -->
-    <!-- End SubHeader ============================================ -->
+		    <div style="padding-top: 50px;">
+			<a href="list_page.html" class="button_intro">Resturaunts</a>
+			<a href="list_page.html" class="button_intro">Recipes</a>
+		    </div>
+
+		</div><!-- End sub_content -->
+	    </div><!-- End subheader -->
+	    <div id="count" class="hidden-xs">
+		<ul>
+		    <li><span class="number">2650</span> Restaurants</li>
+		    <li><span class="number">5350</span> People Served</li>
+		    <li><span class="number">12350</span> Registered Users</li>
+		</ul>
+	    </div>
+	</section><!-- End section -->
+	<!-- End SubHeader ============================================ -->
 
      <!-- Content ================================================== -->
 
