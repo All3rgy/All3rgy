@@ -9,6 +9,7 @@ const MongoClient = require('mongodb').MongoClient;
 const mongodb_url = "mongodb://admin:root@ds131340.mlab.com:31340/all3rgy";
 var db;
 
+//========Calculates distance for typos===============
 function typoDistance(a, b) {
     if (a.length === 0) return b.length; 
     if (b.length === 0) return a.length; 
@@ -71,21 +72,29 @@ router.post('/search', (req,res) => {
     var cursor;
     var tagquery = [];
     var clearq;
-    
+
+    // Checks if the allergy is more than one word, turn it into a list
     if (allergyquery != undefined && typeof allergyquery == "string"){
 	tagquery = allergyquery.split(); 
     }
-    else if (allergyquery == undefined)
-    	cursor = db.collection('order').find({name:namequery});
+    // Checks if users selected tags, only do specific query
+    if (allergyquery == undefined)
+	cursor = db.collection('order').find({name:namequery});
     else
+	// Checks if there are multiple allergies
 	cursor = db.collection('order').find({name:namequery, tags: {$in : tagquery }});
-    
+
+    console.log(cursor);
     cursor.toArray(function(err, results) {
 	console.log(results);
-	
+
+	//Final query to be pushed to db
 	finalquery = [];
-	
+
+	//Checks to see if there are any results
 	if (results != undefined){
+
+	    //Double checks allergies to see if the allergy is in the result
 	    for (const r of results){
 		clearq = true;
 		
@@ -103,11 +112,10 @@ router.post('/search', (req,res) => {
 	}
 
 	console.log(finalquery);
-	// results = results[0]['name'];
-	return res.render('layout', {foods: finalquery});
-	// res.send(results);
-	
+
 	// send HTML file populated with quotes here
+	return res.render('layout', {foods: finalquery});
+	
     });
     
 });
