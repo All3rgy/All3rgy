@@ -65,14 +65,20 @@ router.get('/', function(req, res, next) {
 
 //Search Handler
 router.post('/search', (req,res) => {
-    console.log(req.body);
+    // console.log(req.body);
+
+    //Getting filters from POST request
 
     var namequery = req.body['search'];
     var allergyquery = req.body['allergies'];
+    var typequery = req.body['type'];
     var cursor;
     var tagquery = [];
     var clearq;
 
+    console.log(typequery);
+
+    
     // Checks if the allergy is more than one word, turn it into a list
     if (allergyquery != undefined && typeof allergyquery == "string"){
     	tagquery = allergyquery.split(); 
@@ -84,7 +90,7 @@ router.post('/search', (req,res) => {
     	// Checks if there are multiple allergies
     	cursor = db.collection('order').find({name:namequery, tags: {$in : tagquery }});
 
-    console.log(cursor);
+    // console.log(cursor);
     cursor.toArray(function(err, results) {
     	console.log(results);
 
