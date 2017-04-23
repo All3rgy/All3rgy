@@ -65,54 +65,26 @@ router.get('/', function(req, res, next) {
 
 //Search Handler
 router.post('/search', (req,res) => {
-    // console.log(req.body);
-
-    //Getting filters from POST request
+    console.log(req.body);
 
     var namequery = req.body['search'];
     var allergyquery = req.body['allergies'];
-    var typequery;
     var cursor;
     var tagquery = [];
     var clearq;
 
-    
     // Checks if the allergy is more than one word, turn it into a list
-    if (allergyquery != undefined && typeof allergyquery == "string")
+    if (allergyquery != undefined && typeof allergyquery == "string"){
     	tagquery = allergyquery.split(); 
-    else
-	tagquery = allergyquery;
-
-    if (req.body['type'] != undefined && typeof req.body['type'] == "string")
-    {
-	console.log(req.body['type'].split());
-	typequery = req.body['type'].split();
-	// typequery = tmp;
     }
-
-    // console.log(typeof typequery);
-    
     // Checks if users selected tags, only do specific query
-    if (allergyquery == undefined && typequery == undefined)
+    if (allergyquery == undefined)
     	cursor = db.collection('order').find({name:namequery});
-    else if (typequery != undefined){
-    	
-	var filterquery;
-	if (tagquery != undefined)
-    	    filterquery = tagquery.concat(typequery);
-	else
-	    filterquery = typequery;
-	
-	console.log(filterquery);
-	console.log(namequery);
-	
-    	cursor = db.collection('order').find({name:namequery, tags: {$in : filterquery}});
-    }
     else
     	// Checks if there are multiple allergies
     	cursor = db.collection('order').find({name:namequery, tags: {$in : tagquery }});
 
-    // console.log(cursor);
+    console.log(cursor);
     cursor.toArray(function(err, results) {
     	console.log(results);
 
@@ -126,38 +98,30 @@ router.post('/search', (req,res) => {
     	    for (const r of results){
     		clearq = true;
 		
-		console.log("looping");
-		console.log(tagquery);
-
-		if (tagquery != undefined){
-    		    for (const t of tagquery){
-    			console.log(t in tagquery);
-    			if (!(tagquery.indexOf(t) != -1)){
-    			    clearq = false;
-    			    break;
-    			}
+    		for (const t of tagquery){
+    		    console.log(t in tagquery);
+    		    if (!(tagquery.indexOf(t) != -1)){
+    			clearq = false;
+    			break;
     		    }
+    		}
 		
-		}
-
-		if (clearq)
+    		if (clearq)
     		    finalquery.push(r);
-		
     	    }
     	}
 
-	// finalquery = [{"name": "chicken rice", "owner": "Ashley"},
-	// 	      {"name": "chicken over rice"},
-	// 	      {"name": "chicken fried rice"}];
+	finalquery = [{"name": "chicken rice", "owner": "Ashley"},
+		      {"name": "chicken over rice"},
+		      {"name": "chicken fried rice"}];
 	
 	console.log(finalquery);
-	console.log(namequery);
-	
+
 	// send HTML file populated with quotes here
-	return res.render('results', {foods: finalquery, prevsearch: {"name" : req.body['search']}});
+	return res.render('results', {foods: finalquery});
 	
-    });
-    
+	});
+	
 });
 
 

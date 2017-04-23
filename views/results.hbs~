@@ -23,16 +23,15 @@
         <link href="css/skins/square/grey.css" rel="stylesheet">
         <link href="css/ion.rangeSlider.css" rel="stylesheet">
         <link href="css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
-	<!--[if lt IE 9]>
-	    <script src="js/html5shiv.min.js"></script>
-	    <script src="js/respond.min.js"></script>
-	<![endif]-->
-
+        <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
     </head>
     <body>
         <!--[if lte IE 8]>
-	    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
-	<![endif]-->
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
+<![endif]-->
         <div id="preloader">
             <div class="sk-spinner sk-spinner-wave" id="status">
                 <div class="sk-rect1"></div>
@@ -159,7 +158,7 @@
                     </li>
                     <li>Page active</li>
                 </ul>
-                <!-- <a href="#0" class="search-overlay-menu-btn"><i class="icon-search-6"></i> Search</a> -->
+                <a href="#0" class="search-overlay-menu-btn"><i class="icon-search-6"></i> Search</a>
             </div>
         </div>
         <!-- Position -->
@@ -173,154 +172,137 @@
 	    <div class="row">
                 <div class="col-md-3">
 		    <p><a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap">View on map</a></p>
-
-		    <form method="POST" action="search" >
-
-			<div id="custom-search-input">
-			    <div class="input-group ">
-				<input type="text" style="display:none;">
-				<input type="text"  class="search query" name="search"  value={{prevsearch.name}}/> <br> 
-				<input type="checkbox" name="allergies" value="peanut">Peanut
-				<input type="checkbox" name="allergies" value="gluten-free">Gluten-Free
-				<input type="checkbox" name="allergies" value="wheat">Wheat
-				<input type="checkbox" name="allergies" value="milk">Milk<br>
-			    <input type="checkbox" name="allergies" value="soy">Soy
-			    <input type="checkbox" name="allergies" value="tree nut">Tree Nut
-			    <input type="checkbox" name="allergies" value="shellfish">Shell Fish
-			    
+		    <div id="filters_col">
+                        <a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters" id="filters_col_bt">Filters <i class="icon-plus-1 pull-right"></i></a>
+                        <div class="collapse" id="collapseFilters">
+			    <div class="filter_type">
+                                <h6>Distance</h6>
+                                <input type="text" id="range" value="" name="range">
+                                <h6>Type</h6>
+                                <ul>
+				    <li>
+                                        <label>
+					    <input type="checkbox" checked class="icheck">All 
+					    <small>(49)</small>
+                                        </label>
+				    </li>
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">American 
+					    <small>(12)</small>
+                                        </label>
+                                        <i class="color_1"></i>
+				    </li>
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">Chinese 
+					    <small>(5)</small>
+                                        </label>
+                                        <i class="color_2"></i>
+				    </li>
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">Hamburger 
+					    <small>(7)</small>
+                                        </label>
+                                        <i class="color_3"></i>
+				    </li>
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">Fish 
+					    <small>(1)</small>
+                                        </label>
+                                        <i class="color_4"></i>
+				    </li>
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">Mexican 
+					    <small>(49)</small>
+                                        </label>
+                                        <i class="color_5"></i>
+				    </li>
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">Pizza 
+					    <small>(22)</small>
+                                        </label>
+                                        <i class="color_6"></i>
+				    </li>
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">Sushi 
+					    <small>(43)</small>
+                                        </label>
+                                        <i class="color_7"></i>
+				    </li>
+                                </ul>
 			    </div>
-			</div>
-			
-			<div id="filters_col">
-			    <a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters" id="filters_col_bt">Filters <i class="icon-plus-1 pull-right"></i></a>
-			    <div class="collapse" id="collapseFilters">
-				<div class="filter_type">
-				    <h6>Distance</h6>
-				    <input type="text" id="range" value="" name="range">
-				    <h6>Type</h6>
-				    <ul>
-					<li>
-					    <label>
-						<input type="checkbox" name="type" value="all" checked class="icheck">All 
-						<small>(49)</small>
-					    </label>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" name="type" value="american" class="icheck">American 
-						<small>(12)</small>
-					    </label>
-					    <i class="color_1"></i>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" name="type" value="chinese" class="icheck">Chinese 
-						<small>(5)</small>
-					    </label>
-					    <i class="color_2"></i>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" name="type" value="hamburger" class="icheck">Hamburger 
-						<small>(7)</small>
-					    </label>
-					    <i class="color_3"></i>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" name="type" value="fish" class="icheck">Fish 
-						<small>(1)</small>
-					    </label>
-					    <i class="color_4"></i>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" name="type" value="mexican" class="icheck">Mexican 
-						<small>(49)</small>
-					    </label>
-					    <i class="color_5"></i>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" name="type" value="pizza" class="icheck">Pizza 
-						<small>(22)</small>
-					    </label>
-					    <i class="color_6"></i>
-					</li>
-				    </ul>
-				</div>
-				<div class="filter_type">
-				    <h6>Rating</h6>
-				    <ul>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">
-						<span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i></span>
-					    </label>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">
-						<span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i></span>
-					    </label>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">
-						<span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i></span>
-					    </label>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">
-						<span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></span>
-					    </label>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">
-						<span class="rating"><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></span>
-					    </label>
-					</li>
-				    </ul>
-				</div>
-				<div class="filter_type">
-				    <h6>Options</h6>
-				    <ul class="nomargin">
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">Delivery
-					    </label>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">Take Away
-					    </label>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">Distance 10Km
-					    </label>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">Distance 5Km
-					    </label>
-					</li>
-				    </ul>
-				</div>
-				
-				<input type="submit" value="submit"> 
-				
+			    <div class="filter_type">
+                                <h6>Rating</h6>
+                                <ul>
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">
+					    <span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i></span>
+                                        </label>
+				    </li>
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">
+					    <span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i></span>
+                                        </label>
+				    </li>
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">
+					    <span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i></span>
+                                        </label>
+				    </li>
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">
+					    <span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></span>
+                                        </label>
+				    </li>
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">
+					    <span class="rating"><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></span>
+                                        </label>
+				    </li>
+                                </ul>
 			    </div>
+			    <div class="filter_type">
+                                <h6>Options</h6>
+                                <ul class="nomargin">
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">Delivery
+                                        </label>
+				    </li>
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">Take Away
+                                        </label>
+				    </li>
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">Distance 10Km
+                                        </label>
+				    </li>
+				    <li>
+                                        <label>
+					    <input type="checkbox" class="icheck">Distance 5Km
+                                        </label>
+				    </li>
+                                </ul>
+			    </div>
+                        </div>
+                        <!--End collapse -->
+		    </div>
+		    <!--End filters col-->
+                </div>
 
-			    <!--End collapse -->
-			</div>
-
-
-			<!--End filters col-->
-		    </form>
-		</div>		    
                 <!--End col-md -->
                 <div class="col-md-9">
 		    <div id="tools">
@@ -362,20 +344,20 @@
 					<h3>{{this.owner}}</h3>
 
 					<div class="type">
-					    {{this.tags}}
+					    Mexican / American
 					</div>
-					<!-- <div class="location">
-					     135 Newtownards Road, Belfast, BT4. 
-					     <span class="opening">Opens at 17:00.</span> Minimum order: $15
-					     </div>
-					     <ul>
-					     <li>Take away
-					     <i class="icon_check_alt2 ok"></i>
-					     </li>
-					     <li>Delivery
-					     <i class="icon_check_alt2 no"></i>
-					     </li>
-					     </ul> -->
+					<div class="location">
+					    135 Newtownards Road, Belfast, BT4. 
+					    <span class="opening">Opens at 17:00.</span> Minimum order: $15
+					</div>
+					<ul>
+					    <li>Take away
+						<i class="icon_check_alt2 ok"></i>
+					    </li>
+					    <li>Delivery
+						<i class="icon_check_alt2 no"></i>
+					    </li>
+					</ul>
 				    </div>
 				</div>
 				<div class="col-md-3 col-sm-3">
@@ -523,17 +505,15 @@
         </div>
         <!-- End Register modal -->
         <!-- Search Menu -->
-	
-	<!-- 
-             <div class="search-overlay-menu">
-             <span class="search-overlay-close"><i class="icon_close"></i></span>
-             <form role="search" id="searchform" method="get">
-             <input value="" name="q" type="search" placeholder="Search..." />
-             <button type="submit">
-             <i class="icon-search-6"></i>
-             </button>
-             </form>
-             </div> -->
+        <div class="search-overlay-menu">
+            <span class="search-overlay-close"><i class="icon_close"></i></span>
+            <form role="search" id="searchform" method="get">
+                <input value="" name="q" type="search" placeholder="Search..." />
+                <button type="submit">
+                    <i class="icon-search-6"></i>
+                </button>
+            </form>
+        </div>
         <!-- End Search Menu -->
         <!-- COMMON SCRIPTS -->
         <script src="js/jquery-2.2.4.min.js"></script>
