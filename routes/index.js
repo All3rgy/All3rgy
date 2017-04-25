@@ -9,6 +9,14 @@ const MongoClient = require('mongodb').MongoClient;
 const mongodb_url = "mongodb://admin:root@ds131340.mlab.com:31340/all3rgy";
 var db;
 
+
+// Credentials for calling Edamam API
+var edamambase = "https://api.edamam.com/search?q=";
+var appID = "27511a3c";
+var appKey = "942220d8bf3bb23397fa7eb732745641";
+
+//Included recipe filters are: balanced, high protein, low-fat, low-carb, vegan, vegetarian, sugar-conscious, peanut-free, tree-nut-free, alcohol-free
+
 //========Calculates distance for typos===============
 function typoDistance(a, b) {
     if (a.length === 0) return b.length; 
@@ -64,11 +72,13 @@ router.get('/', function(req, res, next) {
  */
 
 //Search Handler
+
 router.post('/search', (req,res) => {
     // console.log(req.body);
 
+    var edamamurl;
+    
     //Getting filters from POST request
-
     var namequery = req.body['search'];
     var allergyquery = req.body['allergies'];
     var typequery;
@@ -83,6 +93,25 @@ router.post('/search', (req,res) => {
     else
 	tagquery = allergyquery;
 
+    if (tagquery != undefined){
+	var health = "";
+	for (var i = 0; i < tagquery.length; i++)
+	    health += tagquery[i]+",";
+	
+	edamamurl = edamambase + req.body['search'] + "&app_id=" + appID + "&app_key=" + appKey + "&health="+health;
+
+
+    }else
+	edamamurl = edamambase + encodeURIComponent(req.body['search'].trim());
+
+    console.log(edamamurl);
+
+    var http = require("http");
+
+    var request = http.get(url, function (response) {
+
+    });
+
     if (req.body['type'] != undefined && typeof req.body['type'] == "string")
     {
 	console.log(req.body['type'].split());
@@ -94,71 +123,72 @@ router.post('/search', (req,res) => {
     
     // Checks if users selected tags, only do specific query
     if (allergyquery == undefined && typequery == undefined)
-    	cursor = db.collection('order').find({name:namequery});
-    else if (typequery != undefined){
-    	
-	var filterquery;
-	if (tagquery != undefined)
-    	    filterquery = tagquery.concat(typequery);
-	else
-	    filterquery = typequery;
-	
-	console.log(filterquery);
-	console.log(namequery);
-	
-    	cursor = db.collection('order').find({name:namequery, tags: {$in : filterquery}});
-    }
-    else
-    	// Checks if there are multiple allergies
-    	cursor = db.collection('order').find({name:namequery, tags: {$in : tagquery }});
-
-    // console.log(cursor);
-    cursor.toArray(function(err, results) {
-    	console.log(results);
-
-    	//Final query to be pushed to db
-    	finalquery = [];
-
-    	//Checks to see if there are any results
-    	if (results != undefined){
-
-    	    //Double checks allergies to see if the allergy is in the result
-    	    for (const r of results){
-    		clearq = true;
+    		cursor = db.collection('order').find({name:namequery});
+	    else if (typequery != undefined){
+    		
+		var filterquery;
+		if (tagquery != undefined)
+    		    filterquery = tagquery.concat(typequery);
+		else
+		    filterquery = typequery;
 		
-		console.log("looping");
-		console.log(tagquery);
+		console.log(filterquery);
+		console.log(namequery);
+		
+    		cursor = db.collection('order').find({name:namequery, tags: {$in : filterquery}});
+	    }
+	    else
+    		// Checks if there are multiple allergies
+    		cursor = db.collection('order').find({name:namequery, tags: {$in : tagquery }});
 
-		if (tagquery != undefined){
-    		    for (const t of tagquery){
-    			console.log(t in tagquery);
-    			if (!(tagquery.indexOf(t) != -1)){
-    			    clearq = false;
-    			    break;
-    			}
+	    // console.log(cursor);
+	    cursor.toArray(function(err, results) {
+    		console.log(results);
+
+    		//Final query to be pushed to db
+    		finalquery = [];
+
+    		//Checks to see if there are any results
+    		if (results != undefined){
+
+    		    //Double checks allergies to see if the allergy is in the result
+    		    for (const r of results){
+    			clearq = true;
+			
+			console.log("looping");
+			console.log(tagquery);
+
+			if (tagquery != undefined){
+    			    for (const t of tagquery){
+    				console.log(t in tagquery);
+    				if (!(tagquery.indexOf(t) != -1)){
+    				    clearq = false;
+    				    break;
+    				}
+    			    }
+			    
+			}
+
+			if (clearq)
+    			    finalquery.push(r);
+			
     		    }
-		
-		}
+    		}
 
-		if (clearq)
-    		    finalquery.push(r);
+		// finalquery = [{"name": "chicken rice", "owner": "Ashley"},
+		// 	      {"name": "chicken over rice"},
+		// 	      {"name": "chicken fried rice"}];
 		
-    	    }
-    	}
+		console.log(finalquery);
+		console.log(namequery);
+		
+		// send HTML file populated with quotes here
+		return res.render('results', {foods: finalquery, prevsearch: {"name" : req.body['search']}});
 
-	// finalquery = [{"name": "chicken rice", "owner": "Ashley"},
-	// 	      {"name": "chicken over rice"},
-	// 	      {"name": "chicken fried rice"}];
-	
-	console.log(finalquery);
-	console.log(namequery);
-	
-	// send HTML file populated with quotes here
-	return res.render('results', {foods: finalquery, prevsearch: {"name" : req.body['search']}});
-	
-    });
-    
-});
+		
+	    });
+	    
+	   });
 
 
 router.get('/order', function(req, res, next) {

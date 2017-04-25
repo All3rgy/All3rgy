@@ -15,7 +15,7 @@
 <!-- <input type="submit" name="submit" value="Search">
      </form>
 
-     </body> --> -->
+     </body> -->
 
 
 <!DOCTYPE html>
@@ -43,11 +43,19 @@
 	<!-- BASE CSS -->
 	<link href="css/base.css" rel="stylesheet">
 
+	
 	<!--[if lt IE 9]>
-	    <script src="js/html5shiv.min.js"></script>
-	    <script src="js/respond.min.js"></script>
+	<script src="js/html5shiv.min.js"></script>
+	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
+	<script>
+	 var limit = 1;
+
+	 console.log("hello world");
+	 
+	</script>
+	
     </head>
 
     <body>
@@ -94,7 +102,7 @@
 				<li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
 
 
-			    </ul>
+			    </ul>  
 			</div><!-- End main-menu -->
 		    </nav>
 		</div><!-- End row -->
@@ -114,14 +122,13 @@
 			<div id="custom-search-input">
 			    <div class="input-group ">
 				<input type="text" class=" search-query" placeholder="Search Resturaunts or Recipes" name="search">
-				<input type="checkbox" name="allergies" value="peanut">Peanut
-				<input type="checkbox" name="allergies" value="gluten-free">Gluten-Free
-				<input type="checkbox" name="allergies" value="wheat">Wheat
-				<input type="checkbox" name="allergies" value="milk">Milk
-				<input type="checkbox" name="allergies" value="soy">Soy<br>
-				<input type="checkbox" name="allergies" value="tree nut">Tree Nut
-				<input type="checkbox" name="allergies" value="shellfish">Shell Fish
-				
+				<input type="checkbox" class="allergies" name="allergies" value="low-fat">Low Fat
+				<input type="checkbox" class="allergies" name="allergies" value="low-Carb">Low Carb
+				<input type="checkbox" class="allergies" name="allergies" value="vegan">Vegan
+				<input type="checkbox" class="allergies" name="allergies" value="peanut-free ">Peanut
+				<input type="checkbox" class="allergies" name="allergies" value="alcohol-free">Alcohol<br>
+				<input type="checkbox" class="allergies" name="allergies" value="tree-nut-free">Tree Nut
+				<!-- <input type="checkbox" class="allergies" name="allergies" value="shellfish-free">Shell Fish -->
 				<span class="input-group-btn">
 				    <input type="submit" class="btn_search" value="submit">
 				</span>

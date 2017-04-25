@@ -119,9 +119,11 @@ $('ul#cat_nav li a').on('click', function(){
     $(this).addClass('active');
 });
 
-<!-- Drop down menu options-->	
-$('.dropdown-menu').on("click",function(e) {e.stopPropagation();});  /* top drodown prevent close*/
+    <!-- Drop down menu options-->	
+    $('.dropdown-menu').on("click",function(e) {e.stopPropagation();});  /* top drodown prevent close*/
 
 $("a.add_to_basket").on("click",function(){
-$(".dropdown").removeClass("open");
+    $(".dropdown").removeClass("open");
 });
+
+
