@@ -129,7 +129,7 @@ router.post('/search', (req,res) => {
 		// console.log(data["hits"]);
 		finalquery = data["hits"];
 
-		return res.render('results', {foods: finalquery, prevsearch: {"name" : req.body['search']}});
+		return res.render('results', {foods: finalquery, prevsearch: {"name" : encodeURIComponent(req.body['search'])}});
 	    });
     }
 	else{
