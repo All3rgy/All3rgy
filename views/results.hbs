@@ -347,7 +347,7 @@
 				    <div class="desc">
 					<div class="thumb_strip">
 					    <a href="detail_page.html">
-						<img src="img/thumb_restaurant.jpg" alt="">
+						<img src={{this.recipe.image}}  alt="">
 					    </a>
 					</div>
 					<div class="rating">
@@ -358,9 +358,8 @@
 					    <i class="icon_star"></i> (
 					    <small><a href="#0">98 reviews</a></small>)
 					</div>
-					<h3>{{this.name}}</h3>
-					<h3>{{this.owner}}</h3>
-
+					<h3>{{this.recipe.label}}</h3>
+					<h3>{{this.recipe.source}} </h3>
 					<div class="type">
 					    {{this.tags}}
 					</div>
