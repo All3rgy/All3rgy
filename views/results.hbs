@@ -180,13 +180,6 @@
 			    <div class="input-group ">
 				<input type="text" style="display:none;">
 				<input type="text"  class="search query" name="search"  value={{prevsearch.name}}/> <br> 
-				<input type="checkbox" name="allergies" value="peanut">Peanut
-				<input type="checkbox" name="allergies" value="gluten-free">Gluten-Free
-				<input type="checkbox" name="allergies" value="wheat">Wheat
-				<input type="checkbox" name="allergies" value="milk">Milk<br>
-			    <input type="checkbox" name="allergies" value="soy">Soy
-			    <input type="checkbox" name="allergies" value="tree nut">Tree Nut
-			    <input type="checkbox" name="allergies" value="shellfish">Shell Fish
 			    
 			    </div>
 			</div>
@@ -201,115 +194,102 @@
 				    <ul>
 					<li>
 					    <label>
-						<input type="checkbox" name="type" value="all" checked class="icheck">All 
-						<small>(49)</small>
+						<input type="checkbox" class="allergies" name="allergies" value="low-fat">Low Fat
 					    </label>
 					</li>
 					<li>
 					    <label>
-						<input type="checkbox" name="type" value="american" class="icheck">American 
-						<small>(12)</small>
+						<input type="checkbox" class="allergies" name="allergies" value="low-carb">Low Carb
 					    </label>
 					    <i class="color_1"></i>
 					</li>
 					<li>
 					    <label>
-						<input type="checkbox" name="type" value="chinese" class="icheck">Chinese 
-						<small>(5)</small>
+						<input type="checkbox" class="allergies" name="allergies" value="vegan">Vegan
 					    </label>
 					    <i class="color_2"></i>
 					</li>
 					<li>
 					    <label>
-						<input type="checkbox" name="type" value="hamburger" class="icheck">Hamburger 
-						<small>(7)</small>
+						<input type="checkbox" class="allergies" name="allergies" value="peanut-free ">Peanut
 					    </label>
 					    <i class="color_3"></i>
 					</li>
 					<li>
 					    <label>
-						<input type="checkbox" name="type" value="fish" class="icheck">Fish 
-						<small>(1)</small>
+						<input type="checkbox" class="allergies" name="allergies" value="alcohol-free">Alcohol<br>
 					    </label>
 					    <i class="color_4"></i>
 					</li>
 					<li>
 					    <label>
-						<input type="checkbox" name="type" value="mexican" class="icheck">Mexican 
-						<small>(49)</small>
+						<input type="checkbox" class="allergies" name="allergies" value="tree-nut-free">Tree Nut
 					    </label>
 					    <i class="color_5"></i>
 					</li>
-					<li>
-					    <label>
-						<input type="checkbox" name="type" value="pizza" class="icheck">Pizza 
-						<small>(22)</small>
-					    </label>
-					    <i class="color_6"></i>
-					</li>
 				    </ul>
 				</div>
-				<div class="filter_type">
-				    <h6>Rating</h6>
-				    <ul>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">
-						<span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i></span>
-					    </label>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">
-						<span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i></span>
-					    </label>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">
-						<span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i></span>
-					    </label>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">
-						<span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></span>
-					    </label>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">
-						<span class="rating"><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></span>
-					    </label>
-					</li>
-				    </ul>
-				</div>
-				<div class="filter_type">
-				    <h6>Options</h6>
-				    <ul class="nomargin">
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">Delivery
-					    </label>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">Take Away
-					    </label>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">Distance 10Km
-					    </label>
-					</li>
-					<li>
-					    <label>
-						<input type="checkbox" class="icheck">Distance 5Km
-					    </label>
-					</li>
-				    </ul>
-				</div>
-				
+				<!-- <div class="filter_type">
+				     <h6>Rating</h6>
+				     <ul>
+				     <li>
+				     <label>
+				     <input type="checkbox" class="icheck">
+				     <span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i></span>
+				     </label>
+				     </li>
+				     <li>
+				     <label>
+				     <input type="checkbox" class="icheck">
+				     <span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i></span>
+				     </label>
+				     </li>
+				     <li>
+				     <label>
+				     <input type="checkbox" class="icheck">
+				     <span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i></span>
+				     </label>
+				     </li>
+				     <li>
+				     <label>
+				     <input type="checkbox" class="icheck">
+				     <span class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></span>
+				     </label>
+				     </li>
+				     <li>
+				     <label>
+				     <input type="checkbox" class="icheck">
+				     <span class="rating"><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></span>
+				     </label>
+				     </li>
+				     </ul>
+				     </div>
+				     <div class="filter_type">
+				     <h6>Options</h6>
+				     <ul class="nomargin">
+				     <li>
+				     <label>
+				     <input type="checkbox" class="icheck">Delivery
+				     </label>
+				     </li>
+				     <li>
+				     <label>
+				     <input type="checkbox" class="icheck">Take Away
+				     </label>
+				     </li>
+				     <li>
+				     <label>
+				     <input type="checkbox" class="icheck">Distance 10Km
+				     </label>
+				     </li>
+				     <li>
+				     <label>
+				     <input type="checkbox" class="icheck">Distance 5Km
+				     </label>
+				     </li>
+				     </ul>
+				     </div>
+				   -->	
 				<input type="submit" value="submit"> 
 				
 			    </div>

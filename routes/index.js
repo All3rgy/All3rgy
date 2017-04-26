@@ -1,7 +1,6 @@
 var express = require('express');
 var fs = require('fs');
 var request = require('request');
-var cheerio = require('cheerio');
 
 var router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
@@ -110,7 +109,28 @@ router.post('/search', (req,res) => {
     var request = require("request");
 
     var finalquery;
+
     request(edamamurl, function(error, response, body) {
+
+	if (body.indexOf("DOCTYPE") >= 0)
+	    console.log('defaulting');
+	else{
+	    data = JSON.parse(body);
+	    // console.log(data["hits"]);
+	    finalquery = data["hits"];
+	    
+	    return res.render('results', {foods: finalquery, prevsearch: {"name" : req.body['search']}});
+	}
+    });
+
+
+    edamamurl = edamambase + encodeURIComponent(req.body['search'].trim());
+    
+    request(edamamurl, function(error, response, body) {
+
+	if (body.indexOf("DOCTYPE") >= 0)
+	    throw 'Error2';
+	
 	data = JSON.parse(body);
 	// console.log(data["hits"]);
 	finalquery = data["hits"];
@@ -119,83 +139,83 @@ router.post('/search', (req,res) => {
     });
     
 
-    
+	
     // if (req.body['type'] != undefined && typeof req.body['type'] == "string")
-    // {
-    // 	console.log(req.body['type'].split());
-    // 	typequery = req.body['type'].split();
-    // 	// typequery = tmp;
-    // }
+	// {
+	// 	console.log(req.body['type'].split());
+	// 	typequery = req.body['type'].split();
+	// 	// typequery = tmp;
+	// }
 
-    // // console.log(typeof typequery);
-    
-    // // Checks if users selected tags, only do specific query
-    // if (allergyquery == undefined && typequery == undefined)
-    // 		cursor = db.collection('order').find({name:namequery});
-    // 	    else if (typequery != undefined){
-    		
-    // 		var filterquery;
-    // 		if (tagquery != undefined)
-    // 		    filterquery = tagquery.concat(typequery);
-    // 		else
-    // 		    filterquery = typequery;
-		
-    // 		console.log(filterquery);
-    // 		console.log(namequery);
-		
-    // 		cursor = db.collection('order').find({name:namequery, tags: {$in : filterquery}});
-    // 	    }
-    // 	    else
-    // 		// Checks if there are multiple allergies
-    // 		cursor = db.collection('order').find({name:namequery, tags: {$in : tagquery }});
+	// // console.log(typeof typequery);
+	
+	// // Checks if users selected tags, only do specific query
+	// if (allergyquery == undefined && typequery == undefined)
+	// 		cursor = db.collection('order').find({name:namequery});
+	// 	    else if (typequery != undefined){
+    	
+	// 		var filterquery;
+	// 		if (tagquery != undefined)
+	// 		    filterquery = tagquery.concat(typequery);
+	// 		else
+	// 		    filterquery = typequery;
+	
+	// 		console.log(filterquery);
+	// 		console.log(namequery);
+	
+	// 		cursor = db.collection('order').find({name:namequery, tags: {$in : filterquery}});
+	// 	    }
+	// 	    else
+	// 		// Checks if there are multiple allergies
+	// 		cursor = db.collection('order').find({name:namequery, tags: {$in : tagquery }});
 
-    // 	    // console.log(cursor);
-    // 	    cursor.toArray(function(err, results) {
-    // 		console.log(results);
+	// 	    // console.log(cursor);
+	// 	    cursor.toArray(function(err, results) {
+	// 		console.log(results);
 
-    // 		//Final query to be pushed to db
-    // 		finalquery = [];
+	// 		//Final query to be pushed to db
+	// 		finalquery = [];
 
-    // 		//Checks to see if there are any results
-    // 		if (results != undefined){
+	// 		//Checks to see if there are any results
+	// 		if (results != undefined){
 
-    // 		    //Double checks allergies to see if the allergy is in the result
-    // 		    for (const r of results){
-    // 			clearq = true;
-			
-    // 			console.log("looping");
-    // 			console.log(tagquery);
+	// 		    //Double checks allergies to see if the allergy is in the result
+	// 		    for (const r of results){
+	// 			clearq = true;
+	
+	// 			console.log("looping");
+	// 			console.log(tagquery);
 
-    // 			if (tagquery != undefined){
-    // 			    for (const t of tagquery){
-    // 				console.log(t in tagquery);
-    // 				if (!(tagquery.indexOf(t) != -1)){
-    // 				    clearq = false;
-    // 				    break;
-    // 				}
-    // 			    }
-			    
-    // 			}
+	// 			if (tagquery != undefined){
+	// 			    for (const t of tagquery){
+	// 				console.log(t in tagquery);
+	// 				if (!(tagquery.indexOf(t) != -1)){
+	// 				    clearq = false;
+	// 				    break;
+	// 				}
+	// 			    }
+	
+	// 			}
 
-    // 			if (clearq)
-    // 			    finalquery.push(r);
-			
-    // 		    }
-    // 		}
+	// 			if (clearq)
+	// 			    finalquery.push(r);
+	
+	// 		    }
+	// 		}
 
-    // 		// finalquery = [{"name": "chicken rice", "owner": "Ashley"},
-    // 		// 	      {"name": "chicken over rice"},
-    // 		// 	      {"name": "chicken fried rice"}];
-		
-    // 		console.log(finalquery);
-    // 		console.log(namequery);
-		
-    // 		// send HTML file populated with quotes here
-    // 		return res.render('results', {foods: finalquery, prevsearch: {"name" : req.body['search']}});
+	// 		// finalquery = [{"name": "chicken rice", "owner": "Ashley"},
+	// 		// 	      {"name": "chicken over rice"},
+	// 		// 	      {"name": "chicken fried rice"}];
+	
+	// 		console.log(finalquery);
+	// 		console.log(namequery);
+	
+	// 		// send HTML file populated with quotes here
+	// 		return res.render('results', {foods: finalquery, prevsearch: {"name" : req.body['search']}});
 
-		
-    // });
-	    
+	
+	// });
+	
 });
 
 
