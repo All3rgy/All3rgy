@@ -8,7 +8,7 @@
         <meta name="keywords" content="pizza, delivery food, fast food, sushi, take away, chinese, italian food">
         <meta name="description" content="">
         <meta name="author" content="Ansonika">
-        <title>QuickFood - Quality delivery or take away food</title>
+        <title>Recipe Results</title>
         <!-- Favicons-->
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
         <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
@@ -339,10 +339,13 @@
 					    <small><a href="#0">98 reviews</a></small>)
 					</div>
 					<h3>{{this.recipe.label}}</h3>
-					<h3>{{this.recipe.source}} </h3>
-					<div class="type">
-					    {{this.tags}}
-					</div>
+					<h4>{{this.recipe.source}} </h4>
+					<h3>Health</h3>
+					{{#each recipe.healthLabels}}
+					    <div class="type" style="display:inline-block;">
+						{{this}}
+					    </div>
+					{{/each}}
 					<!-- <div class="location">
 					     135 Newtownards Road, Belfast, BT4. 
 					     <span class="opening">Opens at 17:00.</span> Minimum order: $15
@@ -360,7 +363,7 @@
 				<div class="col-md-3 col-sm-3">
 				    <div class="go_to">
 					<div>
-					    <a href="detail_page.html" class="btn_1">View Menu</a>
+					    <a href={{this.recipe.url}} class="btn_1">View Recipe</a>
 					</div>
 				    </div>
 				</div>

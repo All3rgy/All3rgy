@@ -16,6 +16,26 @@ var appKey = "942220d8bf3bb23397fa7eb732745641";
 
 //Included recipe filters are: balanced, high protein, low-fat, low-carb, vegan, vegetarian, sugar-conscious, peanut-free, tree-nut-free, alcohol-free
 
+//Shuffle Array
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+	// Pick a remaining element...
+	randomIndex = Math.floor(Math.random() * currentIndex);
+	currentIndex -= 1;
+
+	// And swap it with the current element.
+	temporaryValue = array[currentIndex];
+	array[currentIndex] = array[randomIndex];
+	array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
 //========Calculates distance for typos===============
 function typoDistance(a, b) {
     if (a.length === 0) return b.length; 
@@ -97,7 +117,7 @@ router.post('/search', (req,res) => {
 	for (var i = 0; i < tagquery.length; i++)
 	    health += tagquery[i];
 	
-	edamamurl = edamambase + encodeURIComponent(req.body['search']) + "&app_id=" + appID + "&app_key=" + appKey + "&health="+health;
+	edamamurl = edamambase + encodeURIComponent(req.body['search']) + "&app_id=" + appID + "&app_key=" + appKey + "&health="+health.trim()+'&from=0&to=50';
 
 
     }else
